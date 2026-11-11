@@ -1,2 +1,2 @@
-# iKrut0nardo.github.io-dzen
+# dzen
 DZEN - project
