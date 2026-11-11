@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DZEN — парикмахерская студия</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&family=Jost:wght@200;300&family=Marck+Script&display=swap">
+<style>
+:root{--paper:#fff;--ink:#0f0f0f;--g:#e7e7e7;color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f0f0f;--ink:#f2f2f2;--g:#1e1e1e}}
+:root[data-theme="dark"]{--paper:#0f0f0f;--ink:#f2f2f2;--g:#1e1e1e}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{font:400 1rem/1.5 "Courier New",Cousine,monospace;background:var(--paper);color:var(--ink);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px dashed currentColor;outline-offset:3px}
+.hand{font-family:"Marck Script",cursive}
+header{position:fixed;top:0;left:0;right:0;height:calc(64px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) clamp(16px,4vw,48px) 0;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:40;color:#fff;mix-blend-mode:difference}
+.logo{font:200 1.6rem Jost,sans-serif;letter-spacing:.25em;text-decoration:none}
+nav{display:flex;gap:22px;font-size:.9rem}
+nav a{text-decoration:none}nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.btn{display:inline-block;font:700 .85rem "Courier New",Cousine,monospace;padding:12px 22px;border:1px solid currentColor;background:transparent;color:inherit;text-decoration:none;cursor:pointer;transition:background .3s,color .3s,transform .25s cubic-bezier(.3,1.6,.5,1)}
+.btn:hover{transform:translateY(-3px) rotate(-1.5deg)}
+.btn.f{background:var(--tc);color:var(--bgc);border-color:var(--tc)}
+header .btn:hover{background:#fff;color:#000}
+.pg{position:absolute;left:0;bottom:0;height:2px;width:100%;background:#fff;transform-origin:left;transform:scaleX(0)}
+.sec{position:relative;overflow:hidden;padding:clamp(72px,11vw,140px) clamp(16px,6vw,72px);background:var(--bgc);color:var(--tc)}
+.k{--bgc:var(--ink);--tc:var(--paper)}.l{--bgc:var(--paper);--tc:var(--ink)}.gr{--bgc:var(--g);--tc:var(--ink)}
+.w{max-width:960px;margin:0 auto;position:relative}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:120px}
+.hero .w{max-width:1200px;width:100%}
+h1{font:200 clamp(4.6rem,25vw,20rem)/.9 Jost,sans-serif;letter-spacing:.06em;position:relative;z-index:2;translate:calc(var(--mx,0)*14px) calc(var(--sy,0)*-.2px)}
+.ch{display:inline-block;transform-origin:50% 100%;animation:drop .9s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--k)*90ms + .2s)}
+@keyframes drop{from{transform:translateY(110%) rotate(18deg) scaleY(1.5);opacity:0}to{transform:none;opacity:1}}
+.done .ch{animation:none;transition:transform .35s cubic-bezier(.3,1.8,.5,1)}
+.done .ch:hover{transform:translateY(-.08em) rotate(-6deg) scale(1.08)}
+.type{width:0;overflow:hidden;white-space:nowrap;border-right:2px solid;animation:ty 2s steps(26) 1.4s forwards,caret .8s steps(1) infinite;font-size:clamp(.85rem,3.6vw,1.15rem);margin:22px 0;position:relative;z-index:2}
+@keyframes ty{to{width:26ch}}@keyframes caret{50%{border-color:transparent}}
+.acts{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2;animation:drop 1s 1.4s both}
+.blob{position:absolute;background:var(--tc);opacity:.1;animation:morph 9s ease-in-out infinite}
+.b1{width:min(46vw,520px);aspect-ratio:1;right:-6vw;top:-8vh;translate:calc(var(--mx,0)*-50px) calc(var(--my,0)*-50px + var(--sy,0)*.15px)}
+.b2{width:min(18vw,190px);aspect-ratio:1;right:24vw;bottom:-2vh;background:none;border:1px solid var(--tc);opacity:.6;animation-duration:6s;animation-direction:reverse;translate:calc(var(--mx,0)*70px) calc(var(--my,0)*70px - var(--sy,0)*.3px)}
+@keyframes morph{0%,100%{border-radius:50% 50% 50% 50%/60% 40% 60% 40%;transform:rotate(0)}33%{border-radius:30% 70% 60% 40%/50% 60% 40% 50%;transform:rotate(60deg)}66%{border-radius:60% 40% 30% 70%/40% 50% 60% 50%;transform:rotate(-40deg)}}
+.sc{position:absolute;width:100px;right:14vw;top:8vh;z-index:2;animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translate(-30px,-24px) rotate(-10deg)}}
+.bl{transform-origin:50px 50px}.bl.a1{animation:snA .6s ease-in-out infinite alternate}.bl.b1x{animation:snB .6s ease-in-out infinite alternate}
+@keyframes snA{to{transform:rotate(15deg)}}@keyframes snB{to{transform:rotate(-15deg)}}
+.badge{position:absolute;right:clamp(16px,6vw,90px);bottom:21vh;width:120px;height:120px;animation:spin 14s linear infinite}
+.badge text{font:11px "Courier New",monospace;fill:currentColor}
+@keyframes spin{to{transform:rotate(360deg)}}
+.marq{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom,0px));border-block:1px solid var(--tc);padding:10px 0;overflow:hidden;white-space:nowrap}
+.marq div{display:inline-block;animation:mq 26s linear infinite}
+.marq span{padding:0 1.2em}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hint{position:absolute;left:clamp(16px,6vw,72px);bottom:76px;display:flex;gap:10px;align-items:center;font-size:.9rem}
+.hint i{display:inline-block;animation:bob 1.2s ease-in-out infinite;font-style:normal}
+@keyframes bob{50%{transform:translateY(8px)}}
+.hd{margin-bottom:clamp(16px,3vw,32px)}
+.hd small{display:block;font-size:1rem}
+h2{font-size:clamp(2rem,7vw,4.2rem);font-weight:400;letter-spacing:-.07em;line-height:1.05;transition:letter-spacing 1.4s cubic-bezier(.2,1,.3,1)}
+.hd.in h2{letter-spacing:-.03em}
+.rv{opacity:0}
+.rv.in{animation:rise .8s cubic-bezier(.2,1.2,.3,1) calc(var(--d,0)*70ms) both}
+@keyframes rise{from{opacity:0;transform:translateY(50px) rotate(1.5deg)}to{opacity:1;transform:none}}
+.list{border-left:1px solid var(--tc);padding-left:26px;margin-left:5px}
+.row{display:grid;grid-template-columns:1fr auto;gap:2px 20px;padding:10px 14px;position:relative;background:linear-gradient(var(--tc),var(--tc)) left/0 100% no-repeat;transition:background-size .45s cubic-bezier(.7,0,.2,1),color .3s}
+.row::before{content:"";position:absolute;left:-32px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--tc)}
+.row.sel,.row:focus-visible{background-size:100% 100%;color:var(--bgc)}
+@media(hover:hover){.row:hover{background-size:100% 100%;color:var(--bgc)}}
+.row[data-n]{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.row[data-n] .price::after{content:"";display:inline-block;width:14px;height:14px;border:1px solid currentColor;margin-left:12px;vertical-align:-1px;font-size:11px;line-height:12px;text-align:center}
+.row.sel .price::after{content:"✓"}
+.row p{grid-column:1;font-size:.9rem;opacity:.8}
+.row small{opacity:.7;font-size:.8rem}
+.price{white-space:nowrap;font-size:1.05rem;grid-row:1;grid-column:2}
+.note{font-size:1.2rem;padding:0 14px 6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.circ{position:relative;display:inline-block;padding:2px 18px;font-size:1.3rem}
+.circ svg{position:absolute;inset:-6px -4px;width:calc(100% + 8px);height:calc(100% + 12px);fill:none;stroke:currentColor;stroke-width:1.5;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.3s .5s ease-out}
+.in .circ svg{stroke-dashoffset:0}
+.bar{position:fixed;left:clamp(16px,6vw,72px);right:clamp(16px,6vw,72px);bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:39;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 8px 8px 16px;background:var(--ink);color:var(--paper);box-shadow:0 0 0 1px var(--paper);transform:translateY(180%);transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.bar.show{transform:none}
+.bar .btn{padding:9px 16px;background:var(--paper);color:var(--ink);border-color:var(--paper)}
+form{display:grid;gap:12px}
+label{display:grid;gap:2px;font-size:.9rem}
+input{font:inherit;font-size:1rem;color:inherit;background:transparent;border:0;border-bottom:1px solid var(--tc);padding:8px 0;border-radius:0;width:100%}
+input:focus{outline:0;border-bottom-width:3px}
+.er{min-height:1.4em;font-size:.9rem}
+.it{display:grid;grid-template-columns:1fr auto auto;gap:12px;padding:8px 0;border-bottom:1px solid var(--tc);align-items:center;font-size:.95rem}
+.it button{background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:4px 8px}
+.ok{display:none}.ok.show{display:block;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+.acts2{display:flex;gap:12px;flex-wrap:wrap}
+@keyframes pop{from{transform:scale(.7) rotate(-4deg);opacity:0}}
+pre{white-space:pre-wrap;font:inherit;font-size:.85rem;border:1px solid var(--tc);padding:12px;margin:12px 0}
+footer{background:var(--ink);color:var(--paper);padding:40px clamp(16px,6vw,72px) 100px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.9rem}
+@media(max-width:820px){
+nav{display:none}
+.two{grid-template-columns:1fr;gap:24px}
+.row p{font-size:.82rem}.row{padding:8px 10px}.row::before{top:16px}
+.sc{width:70px;right:6vw;top:1vh}.badge{display:none}
+.b1{top:auto;bottom:6vh;right:-20vw;width:70vw}.b2{right:auto;left:64vw;bottom:28vh;width:80px}
+.list{padding-left:20px}.row::before{left:-26px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.type{width:26ch}.rv{opacity:1}}
+</style>
+</head>
+<body>
+<header><a class="logo" href="#top">DZEN</a><nav><a href="#cut">стрижка</a><a href="#care">уходы</a><a href="#packs">пакеты</a><a href="#style">прическа</a><a href="#pick">подбор ухода</a></nav><a class="btn" href="#book">Записаться</a><i class="pg"></i></header>
+<div class="bar" id="bar" inert><span></span><a class="btn" href="#book">Оформить запись</a></div>
+
+<main id="top">
+<section class="sec hero k"><div class="w" id="hero">
+<h1 data-split aria-label="DZEN">DZEN</h1>
+<p class="type">стрижки · уходы · прически</p>
+<div class="acts"><a class="btn f" href="#cut">Меню и цены</a><a class="btn" href="https://www.instagram.com/nata__dzen/" target="_blank" rel="noopener">@nata__dzen</a></div>
+<div class="blob b1"></div><div class="blob b2"></div>
+<svg class="sc" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><g class="bl a1"><path d="M50 50L94 14M50 50L30 70"/><circle cx="22" cy="78" r="13"/></g><g class="bl b1x"><path d="M50 50L94 86M50 50L30 30"/><circle cx="22" cy="22" r="13"/></g><circle cx="50" cy="50" r="3" fill="currentColor" stroke="none"/></svg>
+</div>
+<svg class="badge" viewBox="0 0 130 130" aria-hidden="true"><defs><path id="c" d="M65 65m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text><textPath href="#c">nata__dzen · price · menu · nata__dzen · </textPath></text></svg>
+<div class="hint"><i>↓</i>листайте вниз</div>
+<div class="marq" aria-hidden="true"><div><span>price [стрижка]</span><span>✂</span><span>price [уходы]</span><span>✂</span><span>price [пакеты]</span><span>✂</span><span>price [прическа]</span><span>✂</span><span>price [стрижка]</span><span>✂</span><span>price [уходы]</span><span>✂</span><span>price [пакеты]</span><span>✂</span><span>price [прическа]</span><span>✂</span></div></div>
+</section>
+
+<section class="sec l" id="cut"><div class="w">
+<div class="hd"><small>price</small><h2>[стрижка]</h2><p class="hand" style="font-size:1.1rem;margin-top:4px">нажмите на услугу, чтобы добавить её в запись</p></div>
+<div class="list">
+<div class="row" tabindex="0"><div><b>стрижка</b> <small>[~1ч 15мин]</small></div><span class="price">100 р</span><p>мытье головы / экспресс уход для волос* / стрижка / ровный браш или легкая накрутка</p></div>
+<div class="note hand">*уход держится на волосах до 5 смываний</div>
+<div class="row" tabindex="0"><div><b>челка</b> <small>[~20мин]</small></div><span class="price">25 р</span><p>без мытья головы, на чистые волосы</p></div>
+<div class="row" tabindex="0"><div><b>мытье головы</b></div><span class="price">75 р</span><p>экспресс уход с укладкой [ровный браш или легкая накрутка]</p></div>
+<div class="row" tabindex="0"><div><b>extra</b></div><span class="price">15 р</span><p>пилинг кожи головы</p></div>
+<div class="row" tabindex="0"><div><b>bonus</b></div><span class="price">90 р</span><p>при записи на любую услугу консультация по подбору домашнего ухода</p></div>
+</div></div></section>
+
+<section class="sec gr" id="care"><div class="w">
+<div class="hd"><small>price</small><h2>[уходы]</h2></div>
+<div class="list">
+<div class="row" tabindex="0"><div><b>Milk Shake</b> <small>[~1ч 30мин]</small></div><span class="price">120 р</span></div>
+<div class="row" tabindex="0"><div><b>Maraes Color Care</b> <small>[~1ч 30мин]</small></div><span class="price">120 р</span></div>
+<div class="row" tabindex="0"><div><b>Anti Hair Loss</b> <small>[~1ч 30мин]</small></div><span class="price">120 р</span></div>
+<div class="row" tabindex="0"><div><b>«Последняя надежда»</b> <small>[~2ч]</small></div><span class="price">300 р</span><p>+20% к стоимости за густоту</p></div>
+<div class="row" tabindex="0"><div><b>Premium Max</b> <small>[~2ч]</small></div><span class="price">320 р</span></div>
+<div class="row" tabindex="0"><div><b>extra</b></div><span class="price">15 р</span><p>пилинг кожи головы</p></div>
+</div></div></section>
+
+<section class="sec k" id="packs"><div class="w">
+<div class="hd"><small>price</small><h2>[пакеты]</h2></div>
+<div class="list">
+<div class="row" tabindex="0"><div><b>стрижка + уход «Последняя надежда»</b></div><span class="price">320 р</span><p>+20% к стоимости за густоту <small>[~2ч 30мин]</small></p></div>
+<div class="row" tabindex="0"><div><b>стрижка + уход Milk Shake / Maraes color care / Anti Hair Loss + пилинг</b> <small>[~2ч]</small></div><span class="price">180 р</span></div>
+<div class="row" tabindex="0"><div><b>стрижка + уход Premium Max</b> <small>[~2ч 30мин]</small></div><span class="price">360 р</span></div>
+</div></div></section>
+
+<section class="sec l" id="style"><div class="w">
+<div class="hd"><small>price</small><h2>[прическа]</h2></div>
+<div class="list">
+<div class="row" tabindex="0"><div><b>basic</b> <small>[~1ч]</small></div><span class="price">120 р</span><p>любая прическа</p></div>
+<div class="row" tabindex="0"><div><b>kids</b> <small>[~1ч]</small></div><span class="price">60 р</span><p>детская прическа</p></div>
+<div class="row" tabindex="0"><div><b>extra</b> · ранний выезд <small>[до 9:00]</small></div><span class="price">+50 р</span></div>
+<div class="row" tabindex="0"><div><b>extra</b> · выезд на локацию</div><span class="price">+70 р</span></div>
+<div class="row" tabindex="0"><div><b>extra</b> · ранний выезд + ваша локация</div><span class="price">+100 р</span></div>
+</div></div></section>
+
+<section class="sec gr" id="pick"><div class="w">
+<div class="hd"><small>price</small><h2>[подбор ухода]</h2></div>
+<div class="two">
+<div class="list">
+<div class="row" tabindex="0"><div><b>подбор домашнего ухода с нуля</b> <small>[4 разных бренда]</small></div><p>индивидуальная подборка 4 средств, которые 100% подойдут твоим волосам: шампунь · кондиционер · маска · термозащита</p></div>
+<div class="row" tabindex="0"><div><b>цена неправильно подобранной маски</b></div><span class="price">160,76 BYN</span></div>
+<div class="row" tabindex="0" data-n="подбор домашнего ухода (4 средства)"><div><b>цена правильно подобранного комплекса</b></div><span class="price"><span class="circ">100 р<svg viewBox="0 0 100 40" preserveAspectRatio="none"><ellipse cx="50" cy="20" rx="48" ry="17"/></svg></span></span></div>
+</div>
+<div>
+<p class="hand" style="font-size:1.4rem;margin:8px 0 14px">*при отсутствии результата — деньги возвращаются</p>
+<p style="margin-bottom:18px">SPF-подборка: термозащита на лето</p>
+<a class="btn f" href="https://www.instagram.com/nata__dzen/" target="_blank" rel="noopener">Отправить сообщение</a>
+</div></div></div></section>
+
+<section class="sec l" id="book"><div class="w">
+<div class="hd"><small>price</small><h2>[запись]</h2></div>
+<div class="two">
+<div><p class="hand" style="font-size:1.3rem;margin-bottom:6px">ваша запись</p><div id="sum"></div><p id="tot" style="margin-top:12px"></p></div>
+<div>
+<form id="f">
+<label>Имя<input name="n" required autocomplete="given-name" placeholder="Анна"></label>
+<label>Телефон<input name="t" type="tel" required autocomplete="tel" placeholder="+375 29 000-00-00"></label>
+<label>Дата записи<input name="d" type="date" required></label>
+<p class="er" id="er" role="alert"></p>
+<button class="btn f" type="submit">Отправить заявку</button>
+</form>
+<div class="ok" id="ok" role="status"><p class="hand" style="font-size:1.4rem">заявка готова</p><p>Отправьте её мастеру в Instagram: скопируйте текст и вставьте в сообщение.</p><pre></pre><div class="acts2"><button class="btn f" type="button" id="cp">Скопировать</button><a class="btn" href="https://www.instagram.com/nata__dzen/" target="_blank" rel="noopener">Открыть Instagram</a><button class="btn" type="button" id="back">Изменить</button></div></div>
+</div></div></div></section>
+</main>
+<footer><span class="logo" style="font-size:1.2rem">DZEN</span><a href="https://www.instagram.com/nata__dzen/" target="_blank" rel="noopener">@nata__dzen</a></footer>
+
+<script>
+var k=0;document.querySelectorAll('[data-split]').forEach(function(el){var t=el.textContent;el.textContent='';for(var j=0;j<t.length;j++){var s=document.createElement('span');s.className='ch';s.setAttribute('aria-hidden','true');s.style.setProperty('--k',k++);s.textContent=t[j];el.appendChild(s)}});
+setTimeout(function(){document.querySelector('h1').classList.add('done')},2400);
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.sec:not(.hero)').forEach(function(s){s.querySelectorAll('.hd,.row,.note,.two>*').forEach(function(e,i){e.classList.add('rv');e.style.setProperty('--d',Math.min(i,8));io.observe(e)})});
+var pg=document.querySelector('.pg'),hero=document.getElementById('hero'),tk=0;
+function onS(){tk=0;var y=scrollY;pg.style.transform='scaleX('+(y/Math.max(document.documentElement.scrollHeight-innerHeight,1))+')';hero.style.setProperty('--sy',Math.min(y,innerHeight))}
+addEventListener('scroll',function(){if(!tk)tk=requestAnimationFrame(onS)},{passive:true});onS();
+addEventListener('pointermove',function(e){hero.style.setProperty('--mx',e.clientX/innerWidth-.5);hero.style.setProperty('--my',e.clientY/innerHeight-.5)});
+
+var sel=[],bar=document.getElementById('bar'),sum=document.getElementById('sum'),tt=document.getElementById('tot'),bookVis=false;
+function fmt(n){return n.toLocaleString('ru-RU')+' р'}
+function total(){return sel.reduce(function(s,r){return s+ +r.dataset.p},0)}
+document.querySelectorAll('.row').forEach(function(r){
+var pr=r.querySelector('.price');if(!pr||/BYN/.test(pr.textContent))return;
+var m=pr.textContent.match(/(\d[\d\s]*)\s*р/);if(!m)return;
+var t=r.firstElementChild.textContent.replace(/\[.*?\]/g,'').replace(/\s+/g,' ').trim(),pp=r.querySelector('p');
+if(/^(extra|bonus)$/.test(t)&&pp)t+=' — '+pp.textContent;
+r.dataset.n=r.dataset.n||t;r.dataset.p=m[1].replace(/\s/g,'');r.setAttribute('role','checkbox');r.setAttribute('aria-checked','false');
+function tg(){var i=sel.indexOf(r);if(i<0)sel.push(r);else sel.splice(i,1);r.classList.toggle('sel',i<0);r.setAttribute('aria-checked',i<0);upd()}
+r.onclick=tg;r.onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();tg()}};
+});
+function buildSum(){
+sum.innerHTML='';
+if(!sel.length){sum.innerHTML='<p>пока ничего не выбрано</p>';tt.innerHTML='<a class="btn" href="#cut">Выбрать услуги</a>';return}
+sel.forEach(function(r){var d=document.createElement('div');d.className='it';var a=document.createElement('span'),b=document.createElement('b'),x=document.createElement('button');a.textContent=r.dataset.n;b.textContent=fmt(+r.dataset.p);x.type='button';x.textContent='✕';x.setAttribute('aria-label','Убрать: '+r.dataset.n);x.onclick=function(){r.click()};d.append(a,b,x);sum.appendChild(d)});
+tt.textContent='итого: '+fmt(total())+(sel.some(function(r){return /\+20%/.test(r.textContent)})?' · +20% за густоту':'');
+}
+function upd(){
+var v=sel.length>0&&!bookVis;
+bar.firstElementChild.textContent='выбрано: '+sel.length+' · '+fmt(total());
+bar.classList.toggle('show',v);bar.inert=!v;buildSum()}
+new IntersectionObserver(function(es){bookVis=es[0].isIntersecting;upd()},{threshold:.2}).observe(document.getElementById('book'));
+var f=document.getElementById('f'),ok=document.getElementById('ok'),er=document.getElementById('er');
+f.d.min=new Date().toISOString().slice(0,10);
+f.onsubmit=function(e){e.preventDefault();
+if(!sel.length){er.textContent='Выберите хотя бы одну услугу в меню.';return}
+er.textContent='';
+var msg='Здравствуйте! Хочу записаться на '+f.d.value.split('-').reverse().join('.')+'.\nИмя: '+f.n.value+'\nТелефон: '+f.t.value+'\nУслуги:\n'+sel.map(function(r){return '- '+r.dataset.n+' — '+fmt(+r.dataset.p)}).join('\n')+'\nИтого: '+fmt(total());
+ok.querySelector('pre').textContent=msg;f.style.display='none';ok.classList.add('show')};
+document.getElementById('cp').onclick=function(){var pre=ok.querySelector('pre'),b=this;
+function sl(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Выделено — скопируйте'}
+try{navigator.clipboard.writeText(pre.textContent).then(function(){b.textContent='Скопировано'},sl)}catch(x){sl()}};
+document.getElementById('back').onclick=function(){ok.classList.remove('show');f.style.display=''};
+upd();
+</script>
+</body>
+</html>
