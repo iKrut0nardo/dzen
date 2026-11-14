@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ikrut0nardo.github.io/dzen/sitemap.xml
