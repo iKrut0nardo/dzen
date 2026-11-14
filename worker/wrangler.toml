@@ -1,0 +1,16 @@
+name = "dzen-bookings"
+main = "src/index.js"
+compatibility_date = "2026-11-14"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dzen-bookings"
+database_id = "45033d93-52fc-47f4-902b-0d1921b21695"
+migrations_dir = "migrations"
+
+[vars]
+SITE_ORIGIN = "https://ikrut0nardo.github.io"
+ADMIN_TELEGRAM_ID = "8783070286"
+
+[triggers]
+crons = ["*/5 * * * *"]
