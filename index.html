@@ -341,8 +341,8 @@ try{
 var response=await fetch(apiBase+'/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:form.elements.name.value,phone:form.elements.phone.value,serviceIds:Array.from(selected.keys()),date:selectedDate,time:selectedTime,consent:form.elements.consent.checked,website:form.elements.website.value})});
 var data=await response.json();if(!response.ok)throw new Error(data.error||'Не удалось создать запись.');
 form.hidden=true;successBox.classList.add('show');statusEl.textContent=data.notificationPending?'Запись создана. Уведомление администратору будет отправлено повторно.':'Запись создана, администратор получил уведомление.';
-selected.clear();serviceRows.forEach(function(rows){rows.forEach(function(row){row.classList.remove('sel');row.setAttribute('aria-checked','false')})});
 selectedDate='';selectedTime='';buildSum();updateBookingButton();bar.classList.remove('show');bar.inert=true;
+await loadAvailability();statusEl.textContent=data.notificationPending?'Запись создана. Уведомление администратору будет отправлено повторно.':'Запись создана, администратор получил уведомление.';
 }catch(error){errorEl.textContent=error.message||'Произошла ошибка. Попробуйте ещё раз.';if(/занят|время/i.test(error.message||'')){selectedDate='';selectedTime='';loadAvailability()}}
 finally{submitButton.textContent='Записаться';updateBookingButton()}
 };
